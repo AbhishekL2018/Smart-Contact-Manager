@@ -6,7 +6,27 @@
 </head>
 <body>
 <section class="signup-banner">
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="my-card">
+                <h2 class="text-center">SignUp here</h2>
+                
+            </div>
+        </div>
+    </div>
+</div>
 </section>
 </body>
 </html>
+
+
+private String name;
+@Column(unique = true)
+private String Email;
+private String password;
+private String role;
+private boolean enabled;
+private String imageUrl;
+@Column(length = 500)
+private String about;
