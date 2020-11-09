@@ -8,10 +8,49 @@
 <section class="signup-banner">
 <div class="container">
     <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div class="my-card">
-                <h2 class="text-center">SignUp here</h2>
-                
+        <div class="col-md-6 offset-md-3">
+            <div class="my-card mt-3">
+                <h2 class="text-center font-weight-bold signup-banner-text">SignUp here</h2>
+                <br/>
+                <form action="" th:action="@{/smart-contact-manager/do_register}" method="post" th:object="${user}">
+
+                    <!--Name field-->
+                    <div class="form-group">
+                        <label for="name_field" class="signup-text">Your Name</label>
+                        <input type="text" name="name" class="form-control" id="name_field" aria-describedby="name_field"
+                        placeholder="enter name" th:value="${user.name}"/>
+                    </div>
+
+                    <!--email field-->
+                    <div class="form-group">
+                        <label for="email_field" class="signup-text">Email</label>
+                        <input type="email" name="email" class="form-control" id="email_field" aria-describedby="email_field"
+                               placeholder="enter email address" th:value="${user.email}"/>
+                    </div>
+
+                    <!--Password field-->
+                    <div class="form-group">
+                        <label for="password_field" class="signup-text">Password</label>
+                        <input type="password" name="password" class="form-control" id="password_field" aria-describedby="password_field"
+                               placeholder="enter password"/>
+                    </div>
+
+                    <!--Password field-->
+                    <div class="form-group">
+                        <label for="password_field_1" class="signup-text">Confirm Password</label>
+                        <input type="password" class="form-control" id="password_field_1" aria-describedby="password_field_1"
+                               placeholder="enter password"/>
+                    </div>
+
+                    <!--checkbox field-->
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="agreement" name="agreement"/>
+                        <label for="agreement" style="color:black">Accept terms and conditions to continue</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary button-text">Register</button>
+                    <button type="reset" class="btn btn-warning button-text">Reset</button>
+
+                </form>
             </div>
         </div>
     </div>
@@ -19,14 +58,3 @@
 </section>
 </body>
 </html>
-
-
-private String name;
-@Column(unique = true)
-private String Email;
-private String password;
-private String role;
-private boolean enabled;
-private String imageUrl;
-@Column(length = 500)
-private String about;
