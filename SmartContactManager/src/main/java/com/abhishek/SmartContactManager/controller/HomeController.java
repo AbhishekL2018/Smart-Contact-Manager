@@ -1,6 +1,8 @@
 package com.abhishek.SmartContactManager.controller;
 
 import com.abhishek.SmartContactManager.entities.User;
+import com.abhishek.SmartContactManager.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/smart-contact-manager")
 public class HomeController {
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/")
     public String showHomePage(Model model){
@@ -38,7 +43,11 @@ public class HomeController {
     public String registerUser(@ModelAttribute("user") User user,
                                @RequestParam(value = "agreement",
                                        defaultValue = "false") boolean agreement){
-        System.out.println(user);
+        try{
+            userService.saveUser(user);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return "success";
     }
 }

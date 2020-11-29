@@ -2,6 +2,7 @@ package com.abhishek.SmartContactManager.entities;
 
 import javax.persistence.*;
 
+@Entity
 public class ContactDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
